@@ -11,7 +11,7 @@ CREATE CONSTRAINT ON (r:Response) ASSERT r.name IS UNIQUE;
 USING PERIODIC COMMIT
 LOAD CSV WITH HEADERS 
 FROM {FILEPATH} AS line
-WITH DISTINCT line, SPLIT(line.`Date received`, '/') AS date
+WITH DISTINCT line, SPLIT(line.`Date received`, '-') AS date
 WHERE line.`Company response to consumer` IS NOT NULL AND
       line.Company IS NOT NULL
 
